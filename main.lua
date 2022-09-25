@@ -127,13 +127,13 @@ function EasingCurve:findTFromTime(evalTime, p0, p1, p2, p3)
     local QQQ = Q * Q * Q
     if RR < QQQ then
         -- This happens in case there's three distinct real roots (the ray
-        -- crosses the curve in 3 different points).
-        do
-            error('EasingCurve:findTFromTime() -> Multiple solutions for sampling the curve')
-        end
+        -- crosses the curve at 3 different points).
+        --do
+        --    error('EasingCurve:findTFromTime() -> Multiple solutions for sampling the curve')
+        --end
         -- Anyway, the code to get the three roots (if they're within the [0, 1] range) is this.
         -- To avoid this route, run the control points of your curve(s) through the "control-point
-        -- fixing code" mentioned in the references, at the start of this file.
+        -- fixing code" from Blender, mentioned in the references at the start of this file.
         local sqrt_Q = mathSqrt(Q)
         local theta = mathAcos(R / mathSqrt(QQQ))
         local t1 = -2.0 * sqrt_Q * mathCos(theta / 3.0) - aDiv3
@@ -194,9 +194,10 @@ function EasingCurve:findTFromTimeFast(evalTime)
     local RR = R * R
 
     if RR < self.QQQ then
-        do
-            error('EasingCurve:findTFromTimeFast() -> Multiple solutions for sampling the curve')
-        end
+        -- Read the comments in findTFromTime() for how to avoid this slower branch.
+        --do
+        --    error('EasingCurve:findTFromTimeFast() -> Multiple solutions for sampling the curve')
+        --end
         local theta = mathAcos(R / self.srqt_QQQ)
         local t1 = self.neg_2_sqrt_Q * mathCos(theta / 3.0) - self.aDiv3
         local t2 = self.neg_2_sqrt_Q * mathCos((theta + 2.0 * 3.1415926535898) / 3.0) - self.aDiv3
