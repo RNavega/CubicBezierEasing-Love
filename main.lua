@@ -63,8 +63,7 @@ end
 --
 -- Returns:
 -- The 't' parameter for the curve where the intersection happened, or returns
--- 'nil' in case there are multiple intersections (when the curve waves around the
--- vertical ray).
+-- 'nil' in case the intersection doesn't happen or is outside the [0, 1] range.
 function EasingCurve:findTFromTime(evalTime, p0, p1, p2, p3)
     -- Take the "power basis" form of the Cubic Bézier:
     -- P(t) = (1 - t)^3 * P0 + 3t(1-t)^2 * P1 + 3t² (1-t) * P2 + t³ * P3
