@@ -243,11 +243,6 @@ function love.draw()
     love.graphics.line(x1, y1, x2, y2)
     love.graphics.rectangle('line', x2-WIDTH, y2-WIDTH, WIDTH+WIDTH, WIDTH+WIDTH)
 
-    local p0x, p0y = curve.bezier:getControlPoint(1)
-    local p1x, p1y = curve.bezier:getControlPoint(2)
-    local p2x, p2y = curve.bezier:getControlPoint(3)
-    local p3x, p3y = curve.bezier:getControlPoint(4)
-
     local mouseX = love.mouse.getX()
     local mouseY = love.mouse.getY()
 
